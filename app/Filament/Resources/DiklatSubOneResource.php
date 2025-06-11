@@ -20,7 +20,7 @@ class DiklatSubOneResource extends Resource
 {
     protected static ?string $model = DiklatSubOne::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
     protected static ?string $navigationGroup = 'Data Master';
     protected static ?int $navigationSort = 4;
     protected static ?string $navigationLabel = 'Sub Diklat';

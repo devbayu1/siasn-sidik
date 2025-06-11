@@ -18,7 +18,7 @@ class InstituteResource extends Resource
 {
     protected static ?string $model = Institute::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
     protected static ?string $navigationGroup = 'Data Master';
     protected static ?int $navigationSort = 7;
     protected static ?string $navigationLabel = 'Instansi';

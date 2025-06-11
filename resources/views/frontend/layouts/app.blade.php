@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Index - Invent Bootstrap Template</title>
+    <title>{{ $title ?? config('app.name') }}</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
@@ -15,7 +15,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('frontend/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -27,117 +29,34 @@
     <!-- Main CSS File -->
     <link href="{{ asset('frontend/assets/css/main.css') }}" rel="stylesheet">
 
-    <!-- =======================================================
-    * Template Name: Invent
-    * Template URL: https://bootstrapmade.com/invent-bootstrap-business-template/
-    * Updated: May 12 2025 with Bootstrap v5.3.6
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
 </head>
 
 <body class="index-page">
+    @include('frontend.components.header')
+    <main class="main">
+        @yield('content')
+        @include('frontend.components.footer')
+    </main>
 
-<header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container position-relative d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-{{--            <img src="frontend/assets/img/apkom.png" alt="">--}}
-            <h1 class="sitename">APKOM</h1><span>.</span>
-        </a>
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
-        <nav id="navmenu" class="navmenu">
-            <ul>
-                <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#about">Tentang APKOM</a></li>
-                <li><a href="#services">Jenis Pengembangan Kompetensi</a></li>
-                <li><a href="#pricing">Tabel Konversi</a></li>
-                <li><a href="#faq">Panduan</a></li>
-            </ul>
-            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
-    </div>
-</header>
+    <!-- Vendor JS Files -->
+    <script src="{{ asset('/frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/frontend/assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('/frontend/assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('/frontend/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('/frontend/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('/frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('/frontend/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
-<main class="main">
-
-    @yield('content')
-
-</main>
-
-<footer id="footer" class="footer">
-
-    <div class="container footer-top">
-        <div class="row gy-4">
-            <div class="col-lg-4 col-md-6 footer-about">
-                <a href="#" class="logo d-flex align-items-center">
-                    <span class="sitename">BKPSDM</span>
-                </a>
-                <p>Badan Kepegawaian dan Pengembangan Sumber Daya Manusia</p>
-                <div class="footer-contact pt-3">
-                    <p>A108 Adam Street</p>
-                    <p>New York, NY 535022</p>
-                    <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                    <p><strong>Email:</strong> <span>info@example.com</span></p>
-                </div>
-            </div>
-
-            <div class="col-lg-3 footer-links">
-                <h4>Informasi</h4>
-                <ul>
-                    <li><i class="bi bi-chevron-right"></i><a href="#hero">Home</a></li>
-                    <li><i class="bi bi-chevron-right"></i><a href="#about">Tentang APKOM</a></li>
-                    <li><i class="bi bi-chevron-right"></i><a href="#services">Jenis Pengembangan Kompetensi</a></li>
-                    <li><i class="bi bi-chevron-right"></i><a href="#pricing">Tabel Konversi</a></li>
-                    <li><i class="bi bi-chevron-right"></i><a href="#faq">Panduan</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 footer-links">
-                <h4>Sosial Media</h4>
-                <div class="social-links d-flex mt-4">
-                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Badan Kepegawaian dan Pengembangan Sumber Daya Manusia</strong> <span>All Rights Reserved</span></p>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you've purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-{{--            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>--}}
-        </div>
-    </div>
-
-</footer>
-
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<!-- Preloader -->
-<div id="preloader"></div>
-
-<!-- Vendor JS Files -->
-<script src="{{ asset('/frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('/frontend/assets/vendor/php-email-form/validate.js') }}"></script>
-<script src="{{ asset('/frontend/assets/vendor/aos/aos.js') }}"></script>
-<script src="{{ asset('/frontend/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-<script src="{{ asset('/frontend/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-<script src="{{ asset('/frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('/frontend/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-
-<!-- Main JS File -->
-<script src="{{ asset('/frontend/assets/js/main.js') }}"></script>
+    <!-- Main JS File -->
+    <script src="{{ asset('/frontend/assets/js/main.js') }}"></script>
 
 </body>
 

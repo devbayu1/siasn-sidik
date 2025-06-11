@@ -5,6 +5,4 @@ use App\Models\Mosque;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+Route::get('/', [App\Http\Controllers\Front\HomeController::class, 'index'])->name('home');
