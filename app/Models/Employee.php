@@ -8,9 +8,11 @@ use App\Models\Institute;
 use App\Models\Education;
 use App\Models\Major;
 use App\ReligionEnum;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class Employee extends Model
 {
+    use HasUuids;
     protected $fillable = [
         'uuid',
         'old_nip',
