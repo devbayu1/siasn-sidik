@@ -73,7 +73,7 @@ class SettingResource extends Resource
                 TextColumn::make('name')->label('Name')->searchable()->sortable(),
                 TextColumn::make('type')->label('Type')->searchable()->sortable(),
                 TextColumn::make('group')->label('Group')->searchable()->sortable(),
-                TextColumn::make('value')->label('Value')->searchable()->sortable()
+                TextColumn::make('value')->label('Value')->html()->searchable()->sortable()
             ])
             ->filters([
                 //

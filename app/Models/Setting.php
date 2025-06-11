@@ -16,4 +16,12 @@ class Setting extends Model
         'image',
     ];
 
+    protected $append = [
+        'image_url',
+    ];
+
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? asset('storage/' . $this->image) : null;
+    }
 }
