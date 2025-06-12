@@ -154,7 +154,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <button id="submit-button" type="submit">Submit Message</button>
+                                    <button id="submit-button" type="submit">Kirim</button>
                                 </div>
 
                             </div>
@@ -260,6 +260,7 @@
                         // Jika terjadi error validasi (status 422)
                         if (jqXHR.status === 422) {
                             const errors = jqXHR.responseJSON.errors;
+                            console.log(errors); // Debugging: tampilkan error di console
                             // Tampilkan setiap pesan error di bawah input yang sesuai
                             $.each(errors, function(key, value) {
                                 $('#' + key + '-error').text(value[0]);
@@ -280,7 +281,7 @@
                         }
                     },
                     complete: function() {
-                        submitButton.prop('disabled', false).text('Submit Message');
+                        submitButton.prop('disabled', false).text('Kirim');
                     }
                 });
             });

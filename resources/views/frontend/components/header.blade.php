@@ -14,7 +14,9 @@
                 <li><a href="{{ route('home') }}#jenis-pengembangan-kompetensi">Jenis Pengembangan Kompetensi</a></li>
                 <li><a href="{{ route('home') }}#tabel-konversi">Tabel Konversi</a></li>
                 <li><a href="{{ route('home') }}#faq">Panduan</a></li>
-                <li><a href="{{ route('training') }}">Form Diklat</a></li>
+                <li><a href="{{ route('training') }}">
+                        <button class="btn btn-primary">Form Diklat</button>
+                    </a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

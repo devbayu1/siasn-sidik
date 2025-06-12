@@ -48,7 +48,7 @@ class TrainingController extends Controller
         $validator = Validator::make($request->all(), [
             'employee_id'       => 'required|exists:employees,uuid',
             'diklat_id'         => 'required|exists:diklats,id',
-            'diklat_sub_id'     => 'required|exists:diklat_sub_ones,id',
+            'diklat_sub_id'     => 'nullable|exists:diklat_sub_ones,id',
             'training_name'     => 'required|string|max:255',
             'organizer'         => 'required|string|max:255',
             'certificate_number'=> 'nullable|string|max:100',

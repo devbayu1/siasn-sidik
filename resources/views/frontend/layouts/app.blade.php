@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="{{ asset('frontend/assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('frontend/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('favicon.ico') }}" rel="icon">
+    <link href="{{ asset('apple-touch-icon.png') }}" rel="apple-touch-icon">
 
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
