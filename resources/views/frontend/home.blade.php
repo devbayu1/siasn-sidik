@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section">
+    <section id="home" class="hero section">
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -72,7 +72,6 @@
                 @endif
 
 
-
             </div>
 
         </div>
@@ -81,7 +80,7 @@
 
 
     <!-- Jalur Pendidikan -->
-    <section id="services" class="about section light-background">
+    <section id="jenis-pengembangan-kompetensi" class="about section light-background">
         <div class="container section-title" data-aos="fade-up">
             <h2>JENIS PENGEMBANGAN KOMPETENSI</h2>
         </div>
@@ -103,7 +102,7 @@
 
 
     <!-- Tabel Konversi Section -->
-    <section id="pricing" class="pricing section">
+    <section id="tabel-konversi" class="pricing section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">

@@ -19,11 +19,12 @@
             <div class="col-lg-2 footer-links">
                 <h4>Informasi</h4>
                 <ul>
-                    <li><i class="bi bi-chevron-right"></i><a href="#hero">Home</a></li>
+                    <li><i class="bi bi-chevron-right"></i><a href="#home">Home</a></li>
                     <li><i class="bi bi-chevron-right"></i><a href="#about">Tentang APKOM</a></li>
-                    <li><i class="bi bi-chevron-right"></i><a href="#services">Jenis Pengembangan Kompetensi</a></li>
-                    <li><i class="bi bi-chevron-right"></i><a href="#pricing">Tabel Konversi</a></li>
+                    <li><i class="bi bi-chevron-right"></i><a href="#jenis-pengembangan-kompetensi">Jenis Pengembangan Kompetensi</a></li>
+                    <li><i class="bi bi-chevron-right"></i><a href="#tabel-konversi">Tabel Konversi</a></li>
                     <li><i class="bi bi-chevron-right"></i><a href="#faq">Panduan</a></li>
+                    <li><i class="bi bi-chevron-right"></i><a href="/training">Form Diklat</a></li>
                 </ul>
             </div>
 

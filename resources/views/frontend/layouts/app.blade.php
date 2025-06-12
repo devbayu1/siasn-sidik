@@ -12,6 +12,14 @@
     <link href="{{ asset('frontend/assets/img/favicon.png') }}" rel="icon">
     <link href="{{ asset('frontend/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    {{-- Perhatikan penulisan 'jsdelivr' yang benar --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -43,6 +51,9 @@
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
+    {{-- Perhatikan penulisan 'jsdelivr' yang benar --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <!-- Preloader -->
     <div id="preloader"></div>
 
@@ -58,6 +69,7 @@
     <!-- Main JS File -->
     <script src="{{ asset('/frontend/assets/js/main.js') }}"></script>
 
+    @stack('scripts')
 </body>
 
 </html>
