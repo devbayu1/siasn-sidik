@@ -35,7 +35,12 @@ class TrainingStatsOverview extends BaseWidget
             Stat::make("Pegawai Ikut Diklat $year", Training::whereYear('start_date', $year)->distinct('employee_id')->count('employee_id'))
                 ->description("Pegawai ikut diklat tahun $year")
                 ->color('success')
-                ->icon('heroicon-o-academic-cap')
+                ->icon('heroicon-o-academic-cap'),
+
+            Stat::make('Total Jam Pelatihan (Tahun Ini)', Training::whereYear('start_date', Carbon::now()->year)->sum('duration_hours') . ' JP')
+                ->description('Akumulasi jam pelatihan di tahun ' . Carbon::now()->year)
+                ->color('primary')
+                ->icon('heroicon-o-clock'),
         ];
     }
 }
