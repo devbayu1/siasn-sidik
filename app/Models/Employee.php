@@ -50,6 +50,11 @@ class Employee extends Model
     }
 
     // Relationships
+    public function trainings()
+    {
+        return $this->hasMany(Training::class, 'employee_id', 'uuid');
+    }
+
     public function institute()
     {
         return $this->belongsTo(Institute::class);
@@ -69,4 +74,5 @@ class Employee extends Model
     {
         return 'uuid';
     }
+
 }

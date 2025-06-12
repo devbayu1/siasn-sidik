@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Widgets\TrainingStatsOverview;
+use App\Filament\Widgets\LatestTrainingsWidget;
 use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -54,6 +55,7 @@ class DashboardPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 TrainingStatsOverview::class,
+                LatestTrainingsWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
