@@ -9,8 +9,8 @@ use App\Models\Employee;
 use App\Models\Institute;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Exports\RekapJamPelatihanExporter; // <-- 1. Import Exporter
-use Filament\Tables\Actions\ExportAction; // <-- 2. Import ExportAction
+use App\Filament\Exports\RekapJamPelatihanExporter;
+use Filament\Tables\Actions\ExportAction;
 
 
 class LatestTrainingsWidget extends BaseWidget

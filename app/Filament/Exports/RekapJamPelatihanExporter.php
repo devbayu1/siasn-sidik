@@ -29,7 +29,6 @@ class RekapJamPelatihanExporter extends Exporter
             ExportColumn::make('row_number')
                 ->label('No'),
 
-            // Kolom-kolom lainnya tetap sama
             ExportColumn::make('name')
                 ->label('Nama'),
 
