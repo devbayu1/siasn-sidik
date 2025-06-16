@@ -14,6 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Models\Employee;
+use Filament\Tables\Filters\SelectFilter;
 
 class TrainingResource extends Resource
 {
@@ -166,7 +167,15 @@ class TrainingResource extends Resource
 
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                    ->label('Status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'approved' => 'Disetujui',
+                        'rejected' => 'Ditolak'
+                    ])
+                    ->multiple()
+                    ->searchable(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make()

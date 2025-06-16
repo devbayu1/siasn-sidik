@@ -6,6 +6,7 @@ use App\Filament\Resources\TrainingResource;
 use Filament\Actions;
 use Filament\Actions\Exports\Models\Export;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Database\Eloquent\Builder;
 
 class ListTrainings extends ListRecords
 {
@@ -24,6 +25,7 @@ class ListTrainings extends ListRecords
                 ->modalHeading('Ekspor Data')
                 ->successNotificationTitle('Data berhasil diekspor')
                 ->fileName(fn(Export $export): string => "export-sertifikasi-{$export->getKey()}.csv")
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'approved'))
                 ->exporter(\App\Filament\Exports\TrainingExporter::class),
         ];
     }
