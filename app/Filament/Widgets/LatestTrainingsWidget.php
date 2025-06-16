@@ -49,13 +49,10 @@ class LatestTrainingsWidget extends BaseWidget
                         }
                     }], 'duration_hours')
 
-                    // PERBAIKAN UTAMA ADA DI SINI:
-                    // Kita gunakan whereHas untuk SELALU memfilter pegawai.
-                    // Pegawai HARUS memiliki training berstatus 'approved' untuk bisa tampil.
-                    ->whereHas('trainings', function (Builder $subQuery) use ($selectedYear, $selectedMonth) {
-                        $subQuery->where('status', 'approved'); // <-- KONDISI WAJIB untuk menyaring pegawai
 
-                        // Filter tanggal diterapkan di dalam jika dipilih oleh pengguna
+                    ->whereHas('trainings', function (Builder $subQuery) use ($selectedYear, $selectedMonth) {
+                        $subQuery->where('status', 'approved');
+
                         if ($selectedYear) {
                             $subQuery->whereYear('start_date', $selectedYear);
                         }
