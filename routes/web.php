@@ -24,3 +24,6 @@ Route::get('/optimize', function () {
 });
 
 
+Route::get('/queue', function (){
+   \Artisan::call('queue:work --stop-when-empty');
+});

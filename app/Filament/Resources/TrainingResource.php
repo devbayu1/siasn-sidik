@@ -151,8 +151,7 @@ class TrainingResource extends Resource
                     ->options([
                         'pending' => 'Pending',
                         'approved' => 'Disetujui',
-                        'rejected' => 'Ditolak',
-                        'completed' => 'Selesai',
+                        'rejected' => 'Ditolak'
                     ])
                     ->label('Status'),
 

@@ -30,7 +30,7 @@ class ListEmployees extends ListRecords
             ExportAction::make()
                 ->label('Ekspor Pegawai')
                 ->icon('heroicon-o-arrow-up-tray')
-                ->color('secondary')
+                ->color('danger')
                 ->modalHeading('Ekspor Data Pegawai')
                 ->successNotificationTitle('Data Pegawai berhasil diekspor')
                 ->exporter(\App\Filament\Exports\EmployeeExporter::class)
