@@ -21,7 +21,7 @@ class ListTrainings extends ListRecords
             Actions\ExportAction::make()
                 ->label('Ekspor Data')
                 ->icon('heroicon-o-arrow-up-tray')
-                ->color('primary')
+                ->color('success')
                 ->modalHeading('Ekspor Data')
                 ->successNotificationTitle('Data berhasil diekspor')
                 ->fileName(fn(Export $export): string => "export-sertifikasi-{$export->getKey()}.csv")
