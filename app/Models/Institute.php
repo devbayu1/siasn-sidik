@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class Institute extends Model
 {
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['institute_id','name', 'slug'];
 
     public function getRouteKeyName()
     {

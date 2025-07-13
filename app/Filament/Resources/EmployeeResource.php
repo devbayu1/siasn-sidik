@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\EmployeeResource\Pages;
 use App\Filament\Resources\EmployeeResource\RelationManagers;
 use App\Models\Employee;
+use App\Models\Major;
 use App\ReligionEnum;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
@@ -33,6 +34,7 @@ class EmployeeResource extends Resource
         return $form
             ->schema([
                 Grid::make(2)->schema([
+                    TextInput::make('uuid')->required()->unique(ignoreRecord: true)->label('ID (SIASN)'),
                     TextInput::make('nip')->required()->unique(ignoreRecord: true)->label('NIP'),
                     TextInput::make('old_nip')->label('NIP Lama')
                         ->helperText('NIP Lama, jika ada. Kosongkan jika tidak ada.')
@@ -74,7 +76,6 @@ class EmployeeResource extends Resource
                     Select::make('institute_id')
                         ->label('Instansi')
                         ->relationship('institute', 'name')
-                        ->searchable()
                         ->preload(),
 
                     Select::make('education_id')
@@ -86,7 +87,8 @@ class EmployeeResource extends Resource
                     Select::make('major_id')
                         ->label('Jurusan')
                         ->relationship('major', 'name')
-                        ->searchable()
+                        ->getOptionLabelFromRecordUsing(fn (Major $record) => "{$record->name} {$record->major_id}")
+                        ->searchable(['major_id', 'name'])
                         ->preload(),
                 ])
 

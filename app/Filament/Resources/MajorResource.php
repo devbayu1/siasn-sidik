@@ -28,6 +28,11 @@ class MajorResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('major_id')
+                    ->label('Jurusan ID (SIASN)')
+                    ->required()
+                    ->maxLength(255)
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('name')
                     ->label('Nama Jurusan')
                     ->required()
@@ -40,8 +45,8 @@ class MajorResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->label('ID')
+                TextColumn::make('major_id')
+                    ->label('ID (SIASN)')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama Jurusan')

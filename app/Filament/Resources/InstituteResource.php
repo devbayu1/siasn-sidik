@@ -28,6 +28,11 @@ class InstituteResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('institute_id')
+                    ->label('Instansi ID (SIASN)')
+                    ->required()
+                    ->maxLength(255)
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('name')
                     ->label('Nama Instansi')
                     ->required()
@@ -40,8 +45,8 @@ class InstituteResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->label('ID')
+                TextColumn::make('institute_id')
+                    ->label('ID (SIASN)')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama Instansi')

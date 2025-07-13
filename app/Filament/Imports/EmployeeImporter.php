@@ -2,12 +2,16 @@
 
 namespace App\Filament\Imports;
 
+use App\Models\Education;
 use App\Models\Employee;
+use App\Models\Institute;
+use App\Models\Major;
 use App\ReligionEnum;
 use Carbon\Carbon;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
+use Illuminate\Validation\Rule;
 
 class EmployeeImporter extends Importer
 {
@@ -16,11 +20,22 @@ class EmployeeImporter extends Importer
     public static function getColumns(): array
     {
         return [
+            ImportColumn::make('uuid')
+                ->rules(fn ($record) => [
+                    Rule::unique('employees')->ignore($record->uuid),
+                    'max:255'
+                ])
+                ->ignoreBlankState(),
             ImportColumn::make('old_nip')
                 ->rules(['max:255']),
             ImportColumn::make('nip')
                 ->requiredMapping()
-                ->rules(['required', 'max:255']),
+                ->rules(fn ($record) => [
+                    Rule::unique('employees')->ignore($record->nip),
+                    'max:255',
+                    'required'
+                ])
+                ->ignoreBlankState(),
             ImportColumn::make('name')
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
@@ -30,7 +45,12 @@ class EmployeeImporter extends Importer
                 ->rules(['max:255']),
             ImportColumn::make('national_id')
                 ->requiredMapping()
-                ->rules(['required', 'max:255']),
+                ->rules(fn ($record) => [
+                    Rule::unique('employees')->ignore($record->nip),
+                    'max:255',
+                    'required'
+                ])
+                ->ignoreBlankState(),
             ImportColumn::make('birth_place')
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
@@ -44,8 +64,15 @@ class EmployeeImporter extends Importer
             ImportColumn::make('gender')
                 ->requiredMapping()
                 ->rules(['required'])
-                ->examples(['MALE', 'FEMALE'])
-                ->helperText('MALE/FEMALE'),
+                ->examples(['F', 'M'])
+                ->fillRecordUsing(function (Employee $record, string $state): void {
+                    if(strtolower($state) == 'f'){
+                        $record->gender = 'female';
+                    }else{
+                        $record->gender = 'male';
+                    }
+                })
+                ->helperText('F/M'),
             ImportColumn::make('religion')
                 ->requiredMapping()
                 ->rules(['required', 'max:255'])
@@ -58,28 +85,34 @@ class EmployeeImporter extends Importer
             ImportColumn::make('unit')
                 ->rules(['max:255']),
             ImportColumn::make('institute_id')
-                ->numeric()
-                ->relationship('institute', 'id')
-                ->rules(['integer']),
+                ->fillRecordUsing(function (Employee $record, string $state): void {
+                    $institute = Institute::where('institute_id','=', $state)->first();
+                    if($institute){
+                        $record->institute_id = $institute->id;
+                    }
+                }),
             ImportColumn::make('education_id')
-                ->numeric()
-                ->relationship('education', 'id')
-                ->rules(['integer']),
+                ->fillRecordUsing(function (Employee $record, string $state): void {
+                    $education = Education::where('education_id','=', $state)->first();
+                    if($education){
+                        $record->education_id = $education->id;
+                    }
+                }),
             ImportColumn::make('major_id')
-                ->relationship('major', 'id')
-                ->numeric()
-                ->rules(['integer']),
+                ->fillRecordUsing(function (Employee $record, string $state): void {
+                    $major = Major::where('major_id','=', $state)->first();
+                    if($major){
+                        $record->major_id = $major->id;
+                    }
+                }),
         ];
     }
 
     public function resolveRecord(): ?Employee
     {
-        // return Employee::firstOrNew([
-        //     // Update existing records, matching them by `$this->data['column_name']`
-        //     'email' => $this->data['email'],
-        // ]);
-
-        return new Employee();
+         return Employee::firstOrNew([
+             'nip' => $this->data['nip'],
+         ]);
     }
 
     public static function getCompletedNotificationBody(Import $import): string

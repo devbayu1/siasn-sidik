@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\InstituteResource\Pages;
 
+use App\Filament\Imports\InstituteImporter;
 use App\Filament\Resources\InstituteResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
@@ -17,6 +18,10 @@ class ManageInstitutes extends ManageRecords
                 ->icon('heroicon-o-plus')
                 ->color('primary')
                 ->modalHeading('Tambah Instansi Baru'),
+            Actions\ImportAction::make()
+                ->label('Import Data')
+                ->color('success')
+                ->importer(InstituteImporter::class)
         ];
     }
 }

@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class Employee extends Model
 {
-    use HasUuids;
     protected $fillable = [
         'uuid',
         'old_nip',
@@ -68,11 +67,6 @@ class Employee extends Model
     public function major()
     {
         return $this->belongsTo(Major::class);
-    }
-
-    public function getRouteKeyName(): string
-    {
-        return 'uuid';
     }
 
 }
