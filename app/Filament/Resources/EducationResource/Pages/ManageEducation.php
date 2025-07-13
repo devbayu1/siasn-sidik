@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\EducationResource\Pages;
 
+use App\Filament\Imports\EducationImporter;
 use App\Filament\Resources\EducationResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
@@ -17,6 +18,10 @@ class ManageEducation extends ManageRecords
                 ->icon('heroicon-o-plus')
                 ->color('primary')
                 ->modalHeading('Tambah Pendidikan Baru'),
+            Actions\ImportAction::make()
+                ->label('Import Data')
+                ->color('success')
+                ->importer(EducationImporter::class)
         ];
     }
 }

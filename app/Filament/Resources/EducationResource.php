@@ -28,6 +28,13 @@ class EducationResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('education_id')
+                    ->label('Pendidikan ID (SIASN)')
+                    ->numeric()
+                    ->minValue(0)
+                    ->required()
+                    ->maxLength(255)
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('name')
                     ->label('Nama Pendidikan')
                     ->required()
@@ -40,8 +47,8 @@ class EducationResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->label('ID')
+                TextColumn::make('education_id')
+                    ->label('ID (SIASN)')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama Pendidikan')
