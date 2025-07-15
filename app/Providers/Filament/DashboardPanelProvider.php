@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Widgets\TrainingStatsOverview;
 use App\Filament\Widgets\LatestTrainingsWidget;
+use Croustibat\FilamentJobsMonitor\FilamentJobsMonitorPlugin;
 use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -87,7 +88,8 @@ class DashboardPanelProvider extends PanelProvider
                         rules: 'mimes:jpeg,png|max:1024'
                     ),
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
-                \TomatoPHP\FilamentUsers\FilamentUsersPlugin::make()
+                \TomatoPHP\FilamentUsers\FilamentUsersPlugin::make(),
+                FilamentJobsMonitorPlugin::make()->enableNavigation(),
             ])->spa();
     }
 }

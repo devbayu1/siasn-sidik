@@ -57,7 +57,6 @@ class EducationResource extends Resource
                     ->wrap(),
                 Tables\Columns\TextColumn::make('slug')
                     ->label('Slug')
-                    ->searchable()
                     ->sortable()
                     ->wrap(),
                 Tables\Columns\TextColumn::make('created_at')

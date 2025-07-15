@@ -34,7 +34,7 @@ class EmployeeResource extends Resource
         return $form
             ->schema([
                 Grid::make(2)->schema([
-                    TextInput::make('uuid')->required()->unique(ignoreRecord: true)->label('ID (SIASN)'),
+                    TextInput::make('pns_id')->required()->unique(ignoreRecord: true)->label('ID (SIASN)'),
                     TextInput::make('nip')->required()->unique(ignoreRecord: true)->label('NIP'),
                     TextInput::make('old_nip')->label('NIP Lama')
                         ->helperText('NIP Lama, jika ada. Kosongkan jika tidak ada.')

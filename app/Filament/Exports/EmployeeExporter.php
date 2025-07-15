@@ -18,8 +18,8 @@ class EmployeeExporter extends Exporter
         return [
             ExportColumn::make('id')
                 ->label('ID'),
-            ExportColumn::make('uuid')
-                ->label('UUID'),
+            ExportColumn::make('pns_id')
+                ->label('PNS ID'),
             ExportColumn::make('old_nip'),
             ExportColumn::make('nip'),
             ExportColumn::make('name')

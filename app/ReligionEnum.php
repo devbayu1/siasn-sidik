@@ -7,6 +7,7 @@ enum ReligionEnum: string
     case ISLAM = 'Islam';
     case KRISTEN = 'Kristen';
     case KATOLIK = 'Katolik';
+    case KATHOLIK = 'Katholik';
     case HINDU = 'Hindu';
     case BUDDHA = 'Buddha';
     case KHONGHUCU = 'Khonghucu';
@@ -22,6 +23,7 @@ enum ReligionEnum: string
             'islam' => self::ISLAM,
             'kristen' => self::KRISTEN,
             'katolik' => self::KATOLIK,
+            'katholik' => self::KATHOLIK,
             'hindu' => self::HINDU,
             'buddha' => self::BUDDHA,
             'khonghucu' => self::KHONGHUCU,
@@ -34,6 +36,7 @@ enum ReligionEnum: string
             self::ISLAM => 'Islam',
             self::KRISTEN => 'Kristen',
             self::KATOLIK => 'Katolik',
+            self::KATHOLIK => 'Katholik',
             self::HINDU => 'Hindu',
             self::BUDDHA => 'Buddha',
             self::KHONGHUCU => 'Khonghucu',

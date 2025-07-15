@@ -14,6 +14,7 @@ class Employee extends Model
 {
     protected $fillable = [
         'uuid',
+        'pns_id',
         'old_nip',
         'nip',
         'name',

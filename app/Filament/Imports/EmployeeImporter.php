@@ -20,9 +20,8 @@ class EmployeeImporter extends Importer
     public static function getColumns(): array
     {
         return [
-            ImportColumn::make('uuid')
+            ImportColumn::make('pns_id')
                 ->rules(fn ($record) => [
-                    Rule::unique('employees')->ignore($record->uuid),
                     'max:255'
                 ])
                 ->ignoreBlankState(),
@@ -31,10 +30,12 @@ class EmployeeImporter extends Importer
             ImportColumn::make('nip')
                 ->requiredMapping()
                 ->rules(fn ($record) => [
-                    Rule::unique('employees')->ignore($record->nip),
                     'max:255',
                     'required'
                 ])
+                ->fillRecordUsing(function (Employee $record, string $state): void {
+                    $record->nip = str_replace("'",'',$state);
+                })
                 ->ignoreBlankState(),
             ImportColumn::make('name')
                 ->requiredMapping()
@@ -46,10 +47,12 @@ class EmployeeImporter extends Importer
             ImportColumn::make('national_id')
                 ->requiredMapping()
                 ->rules(fn ($record) => [
-                    Rule::unique('employees')->ignore($record->nip),
                     'max:255',
                     'required'
                 ])
+                ->fillRecordUsing(function (Employee $record, string $state): void {
+                    $record->national_id = str_replace("'",'',$state);
+                })
                 ->ignoreBlankState(),
             ImportColumn::make('birth_place')
                 ->requiredMapping()
@@ -79,12 +82,16 @@ class EmployeeImporter extends Importer
                 ->helperText('Islam, Kristen, Katolik, Hindu, Buddha, Khonghucu')
                 ->examples(ReligionEnum::options()),
             ImportColumn::make('phone')
+                ->fillRecordUsing(function (Employee $record, string $state): void {
+                    $record->phone = str_replace("'",'',$state);
+                })
                 ->rules(['max:255']),
             ImportColumn::make('email')
                 ->rules(['max:255']),
             ImportColumn::make('unit')
                 ->rules(['max:255']),
             ImportColumn::make('institute_id')
+                ->ignoreBlankState()
                 ->fillRecordUsing(function (Employee $record, string $state): void {
                     $institute = Institute::where('institute_id','=', $state)->first();
                     if($institute){
@@ -92,6 +99,7 @@ class EmployeeImporter extends Importer
                     }
                 }),
             ImportColumn::make('education_id')
+                ->ignoreBlankState()
                 ->fillRecordUsing(function (Employee $record, string $state): void {
                     $education = Education::where('education_id','=', $state)->first();
                     if($education){
@@ -99,6 +107,7 @@ class EmployeeImporter extends Importer
                     }
                 }),
             ImportColumn::make('major_id')
+                ->ignoreBlankState()
                 ->fillRecordUsing(function (Employee $record, string $state): void {
                     $major = Major::where('major_id','=', $state)->first();
                     if($major){
@@ -145,5 +154,10 @@ class EmployeeImporter extends Importer
     public static function getSuccessNotificationBody(Import $import): string
     {
         return 'Your employee import has been successfully processed.';
+    }
+
+    public function getJobBatchName(): ?string
+    {
+        return 'employee-import';
     }
 }
