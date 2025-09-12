@@ -32,7 +32,11 @@ class TrainingResource extends Resource
             ->schema([
                 Forms\Components\Select::make('employee_id')
                     ->label('Pegawai')
-                    ->options(Employee::all()->pluck('name', 'uuid'))
+                    ->options(
+                        Employee::all()->mapWithKeys(function ($employee) {
+                            return [$employee->uuid => "{$employee->name} - {$employee->nip}"];
+                        })
+                    )
                     ->searchable()
                     ->preload()
                     ->required(),
@@ -116,37 +120,57 @@ class TrainingResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('employee.name')
                     ->label('Nama Pegawai')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->width('20%'), // Mengatur lebar kolom
+
                 Tables\Columns\TextColumn::make('diklat.name')
                     ->label('Diklat')
                     ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('diklatSub.name')
-                    ->label('Sub Diklat')
-                    ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->width('15%'), // Mengatur lebar kolom
+
+//                Tables\Columns\TextColumn::make('diklatSub.name')
+//                    ->label('Sub Diklat')
+//                    ->searchable()
+//                    ->sortable()
+//                    ->width('15%'), // Mengatur lebar kolom
+
                 Tables\Columns\TextColumn::make('training_name')
                     ->label('Nama Pelatihan')
                     ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('organizer')
-                    ->label('Penyelenggara')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('start_date')
-                    ->date()
-                    ->label('Tanggal Mulai'),
-                Tables\Columns\TextColumn::make('end_date')
-                    ->date()
-                    ->label('Tanggal Selesai'),
-                Tables\Columns\TextColumn::make('year')
-                    ->label('Tahun'),
-                Tables\Columns\TextColumn::make('duration_hours')
-                    ->label('Durasi (Jam)'),
+                    ->sortable()
+                    ->width('15%'), // Mengatur lebar kolom,
+//                // Dibiarkan otomatis agar mengisi sisa ruang
+
+//                Tables\Columns\TextColumn::make('organizer')
+//                    ->label('Penyelenggara')
+//                    ->searchable()
+//                    ->sortable()
+//                    ->width('20%'), // Mengatur lebar kolom
+
+//                Tables\Columns\TextColumn::make('start_date')
+//                    ->date()
+//                    ->label('Tanggal Mulai')
+//                    ->width('150px'), // Menggunakan piksel untuk tanggal
+
+//                Tables\Columns\TextColumn::make('end_date')
+//                    ->date()
+//                    ->label('Tanggal Selesai')
+//                    ->width('150px'), // Menggunakan piksel untuk tanggal
+
+//                Tables\Columns\TextColumn::make('year')
+//                    ->label('Tahun')
+//                    ->width('100px'), // Kolom tahun dibuat lebih kecil
+
+//                Tables\Columns\TextColumn::make('duration_hours')
+//                    ->label('Durasi (Jam)')
+//                    ->width('5%'), // Kolom durasi
+
                 SelectColumn::make('status')
                     ->options([
                         'pending' => 'Pending',
@@ -157,13 +181,13 @@ class TrainingResource extends Resource
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
-                    ->label('Dibuat Pada'),
+                    ->label('Dibuat Pada')
+                    ->toggleable(isToggledHiddenByDefault: true), // Disembunyikan secara default
+
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->label('Diperbarui Pada')
-
-
-
+                    ->toggleable(isToggledHiddenByDefault: true), // Disembunyikan secara default
             ])
             ->filters([
                 SelectFilter::make('status')
