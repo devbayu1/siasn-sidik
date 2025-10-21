@@ -15,7 +15,7 @@ class TrainingExporter extends Exporter
     public static function getColumns(): array
     {
         return [
-            ExportColumn::make('employee_id')
+            ExportColumn::make('employee.pns_id')
                 ->label('ID Pegawai'),
             ExportColumn::make('employee.name')
                 ->label('Nama Pegawai'),
